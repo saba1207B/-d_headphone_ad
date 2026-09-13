@@ -1,0 +1,132 @@
+:root {
+    --bg-color: #050505;
+    --text-color: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Make sure we can scroll enough to see all frames */
+.content-overlay {
+    position: relative;
+    z-index: 1;
+}
+
+.canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 100vh;
+    object-fit: contain;
+}
+
+.section {
+    height: 150vh; /* Make sections taller to allow more scrolling per frame */
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+/* Adjust padding for the first and last section to look normal */
+.step-1 { padding-top: 50vh; height: 150vh; justify-content: flex-start; }
+.step-2 { justify-content: flex-end; }
+.step-3 { justify-content: flex-start; }
+.step-4 { justify-content: flex-end; }
+.step-5 { justify-content: center; text-align: center; height: 100vh; }
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem;
+    max-width: 500px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #ffffff, #666666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.05em;
+}
+
+h2 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+}
+
+p {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #a1a1a6; /* Apple-esque gray */
+    margin-bottom: 2rem;
+}
+
+.buy-button {
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.buy-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+}
+
+@media (max-width: 768px) {
+    .section {
+        justify-content: center !important;
+        align-items: flex-end;
+        padding-bottom: 10vh;
+    }
+    .glass-card {
+        padding: 2rem;
+        text-align: center;
+    }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+}
