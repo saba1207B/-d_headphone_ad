@@ -2,6 +2,10 @@
 
 A sleek, Apple-inspired 3D scroll-driven animation website showcasing high-end headphones with smooth canvas rendering and modern glassmorphism UI.
 
+## 🌐 Live Demo
+
+**[View the live website](https://saba1207b.github.io/-d_headphone_ad/)**
+
 ## ✨ Features
 
 - **Smooth 3D Scroll Animation**: Interactive frame-by-frame rendering tied to user scroll depth with easing.
